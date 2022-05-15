@@ -20,6 +20,10 @@
       <%= link_to 'Sign up', new_user_registration_path %>
     <% end %>
   <body>
+
+  <% flash.each do |name, msg| %>
+    <%= msg %>
+  <% end %>
     <%= yield %>
   </body>
 </html>

@@ -1,21 +1,27 @@
 <nav class="navbar navbar-light bg-light">
-<h1>All Questions: <%= @questions.count %></h1>
+  <h1> All Questions: <%= @questions.count %></h1>
 </nav>
 
+<div>
+  <%= link_to 'Ask a new question', new_question_path, :class => "btn btn-success" %>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <% @questions.each do |question|%>
+  </div>
+</div>
+<br>
+
+<h2><%= link_to(question.content.capitalize, question_path(question.id) )%></h2>
+<small> Asked by: <%= question.user.email  %> </small>
 
 <div>
-<%= link_to 'Ask a new question', new_question_path, :class => "btn btn-success" %>
+  <b> Replies: <%= question.answers.count %> </b>
 </div>
-<% @questions.each do |question|%>
-  <hr>
-<div>
-<h2><%= link_to(question.content.capitalize, question_path(question.id) )%></h2>
-  <b> Asked by: <%= question.user.email  %> </br>
+
 <p>
-  <%= link_to 'Delete', [question],
-      method: :delete, :class => "btn btn-outline-danger" %>
+  <%= link_to "Delete", question, method: :delete,  :class => "btn btn-outline-danger"%>
 </p>
 <hr>
-</div>
-
 <% end %>

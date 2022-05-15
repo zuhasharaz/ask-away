@@ -1,8 +1,8 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_question, only: [:show, :destroy]
 
   def show
-    @question = Question.find(params[:id])
     @answers = @question.answers
     @user = current_user
   end
@@ -12,19 +12,38 @@ class QuestionsController < ApplicationController
   end
 
   def new
+    @question = Question.new
+  end
+
+  def update
+    if @question.update(question_params)
+      flash[:notice] = "Question was updated successfully."
+      redirect_to question_path
+    else
+      render 'edit'
+    end
   end
 
   def create
     @question = Question.new(question_params)
     @question.user = current_user
-    @question.save
-    redirect_to questions_path
+    if @question.save
+      flash[:notice] = "Your question was created successfully."
+      redirect_to questions_path
+    else
+      render 'new'
+    end
   end
 
   def destroy
-    @question = Question.find(params[:id])
     @question.destroy
     redirect_to questions_path
+  end
+
+  private
+
+  def set_question
+    @question = Question.find(params[:id])
   end
 
   def question_params

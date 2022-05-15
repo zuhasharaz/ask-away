@@ -1,16 +1,18 @@
 <div class="card text-center">
-<br/>
+<div?>
   <div class="card-header">
-  Answered by <%= answer.user.email %>
+    Answered by <%= answer.user.email %>
   </div>
   <br/>
+
   <div class="card-body">
     <p class="card-text"> <%= answer.body %> </p>
     <%= link_to 'Delete', [answer.question, answer],
     method: :delete, :class =>  "btn btn-danger" %>
   </div>
+
   <div class="card-footer text-muted">
-    <%= time_ago_in_words(answer.created_at) %>
+    <small>  <%= time_ago_in_words(answer.created_at) %> ago </small>
   </div>
   <br/>
 </div>

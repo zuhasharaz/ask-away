@@ -1,20 +1,27 @@
 <h1>Ask a Question</h1>
 
+<% if @question.errors.any? %>
+<div class="alert alert-danger" role="alert">
+  Unable to create your question due to the following:
+</div>
+  <ul>
+    <% @question.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with scope: :question, url: questions_path, local: true do |f| %>
-  <p>
   <p>
     <%= f.text_area :content,
     cols: 70,
     rows: 5,
-    placeholder: 'What are your thoughts?'%>
-
-  </p>
+    placeholder: 'What are you thinking?'%>
   </p>
   <p>
-    <%= f.submit "Ask",  :class => "btn btn-secondary btn-lg" %>
+    <%= f.submit "Ask",  :class => "btn btn-success btn-lg" %>
   </p>
   <br/>
 
   <p> <%= link_to 'Back to all questions', questions_path %> <p>
-
 <% end %>
