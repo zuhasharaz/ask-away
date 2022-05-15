@@ -1,0 +1,20 @@
+<h1>Ask a Question</h1>
+
+<%= form_with scope: :question, url: questions_path, local: true do |f| %>
+  <p>
+  <p>
+    <%= f.text_area :content,
+    cols: 70,
+    rows: 5,
+    placeholder: 'What are your thoughts?'%>
+
+  </p>
+  </p>
+  <p>
+    <%= f.submit "Ask",  :class => "btn btn-secondary btn-lg" %>
+  </p>
+  <br/>
+
+  <p> <%= link_to 'Back to all questions', questions_path %> <p>
+
+<% end %>

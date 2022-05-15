@@ -1,0 +1,14 @@
+<%= simple_form_for [@question, @question.answers.build] do |f| %>
+    <div class="control">
+    <p>
+  <p>
+    <%= f.text_area :body,
+    cols: 185,
+    rows: 5,
+    placeholder: 'What are your thoughts?'%>
+  </p>
+  </p>
+  </div>
+
+  <%= f.button :submit, 'Leave a reply', :class => "btn btn-primary" %>
+  <% end %>

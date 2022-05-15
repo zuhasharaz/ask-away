@@ -1,0 +1,20 @@
+<nav class="navbar navbar-light bg-light">
+  <h1> Question: <%= @question.content %> </h1>
+</nav>
+
+<div>
+  <b> Asked by <%= @question.user.email %>  <%= time_ago_in_words(@question.created_at) %> </b>
+</div>
+<br/>
+
+<button type="button" class="btn btn-primary">
+<h4>Total Answers: <%= @question.answers.count %></h4>
+</button>
+<br/>
+<div>
+  <h5> <%= render @question.answers %></h5>
+</div>
+
+<%= render 'answers/form' %>
+<p> <%= link_to 'Back to all questions', questions_path %> <p>
+
