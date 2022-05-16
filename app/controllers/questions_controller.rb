@@ -4,7 +4,6 @@ class QuestionsController < ApplicationController
 
   def show
     @answers = @question.answers
-    @user = current_user
   end
 
   def index

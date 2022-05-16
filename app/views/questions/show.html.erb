@@ -5,13 +5,13 @@
 
 <br/>
   <button type="button" class="btn btn-success">
-  <h4> Total Answers: <%= @question.answers.count %></h4>
+  <h4> Total Answers: <%= @answers.count %></h4>
 </button>
 <br/>
 <br/>
 
 <div>
-  <h5> <%= render @question.answers %></h5>
+  <h5> <%= render @answers %></h5>
 </div>
 
 <%= render 'answers/form' %>
